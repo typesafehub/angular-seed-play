@@ -1,5 +1,8 @@
 'use strict';
 
+define(['webjars/angularjs/1.0.5/angular.js'], 
+  function() {
+
 /* Services */
 
 
@@ -7,3 +10,5 @@
 // In this case it is a simple value service.
 angular.module('myApp.services', []).
   value('version', '0.1');
+
+});

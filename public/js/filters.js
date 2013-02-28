@@ -1,5 +1,8 @@
 'use strict';
 
+define(['webjars/angularjs/1.0.5/angular.js'], 
+  function() {
+
 /* Filters */
 
 angular.module('myApp.filters', []).
@@ -8,3 +11,5 @@ angular.module('myApp.filters', []).
       return String(text).replace(/\%VERSION\%/mg, version);
     }
   }]);
+
+});

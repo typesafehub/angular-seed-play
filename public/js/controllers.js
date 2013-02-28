@@ -1,12 +1,17 @@
 'use strict';
 
+define(function() {
+
 /* Controllers */
 
+var controllers = {};
 
-function MyCtrl1() {}
-MyCtrl1.$inject = [];
+controllers.MyCtrl1 = function() {}
+controllers.MyCtrl1.$inject = [];
 
+controllers.MyCtrl2 = function() {}
+controllers.MyCtrl2.$inject = [];
 
-function MyCtrl2() {
-}
-MyCtrl2.$inject = [];
+return controllers;
+
+});

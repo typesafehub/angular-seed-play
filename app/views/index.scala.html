@@ -1,9 +1,10 @@
 <!doctype html>
-<html lang="en" ng-app="myApp">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>My AngularJS App</title>
   <link rel="stylesheet" href="css/app.css")">
+  <script data-main="js/app" src="@routes.WebJarAssets.at(WebJarAssets.locate("require.js"))"></script>
 </head>
 <body>
   <ul class="menu">
@@ -15,11 +16,5 @@
 
   <div>Angular seed app: v<span app-version></span></div>
 
-  <script src="@routes.WebJarAssets.at(WebJarAssets.locate("angular.js"))"></script>
-  <script src="js/app.js"></script>
-  <script src="js/services.js"></script>
-  <script src="js/controllers.js"></script>
-  <script src="js/filters.js"></script>
-  <script src="js/directives.js"></script>
 </body>
 </html>
