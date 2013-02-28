@@ -5,8 +5,11 @@
 # Home page
 GET     /                           controllers.Application.index()
 
-# Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+# Map the JS resource paths
+GET     /css/*file                  controllers.Assets.at(path="/public/css", file)
+GET     /img/*file                  controllers.Assets.at(path="/public/img", file)
+GET     /js/*file                   controllers.Assets.at(path="/public/js", file)
+GET     /partials/*file             controllers.Assets.at(path="/public/partials", file)
 
 # Enable webjars to be loaded
 GET     /webjars/*file              controllers.WebJarAssets.at(file)
