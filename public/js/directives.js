@@ -1,6 +1,6 @@
 'use strict';
 
-define(['webjars/angularjs/1.0.5/angular.js'], 
+define(['lib/angular.js'], 
   function() {
 
 /* Directives */

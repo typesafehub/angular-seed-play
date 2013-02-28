@@ -11,5 +11,5 @@ GET     /img/*file                  controllers.Assets.at(path="/public/img", fi
 GET     /js/*file                   controllers.Assets.at(path="/public/js", file)
 GET     /partials/*file             controllers.Assets.at(path="/public/partials", file)
 
-# Enable webjars to be loaded
-GET     /webjars/*file              controllers.WebJarAssets.at(file)
+# Enable webjars to be loaded using the familar web convention of lib
+GET     /lib/*file                  controllers.Application.webJarAssetsAtLocation(file)
