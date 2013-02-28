@@ -3,7 +3,7 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index()
+GET     /                           controllers.Assets.at(path="/public", file="index.html")
 
 # Map the JS resource paths
 GET     /css/*file                  controllers.Assets.at(path="/public/css", file)
@@ -12,4 +12,4 @@ GET     /js/*file                   controllers.Assets.at(path="/public/js", fil
 GET     /partials/*file             controllers.Assets.at(path="/public/partials", file)
 
 # Enable webjars to be loaded using the familar web convention of lib
-GET     /lib/*file                  controllers.Application.webJarAssetsAtLocation(file)
+GET     /lib/*file                  experimentalControllers.WebJarAssets.atLocation(file)
