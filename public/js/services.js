@@ -1,6 +1,6 @@
 'use strict';
 
-define(['lib/angular.js'], 
+define(['webjars!angular.js'], 
   function() {
 
 /* Services */
