@@ -16,8 +16,8 @@ object ApplicationBuild extends Build {
     javaCore)
 
   val main = play.Project(appName, appVersion, appDependencies).settings(
-    // For additionally resolving from the conventional ivy local home.
     resolvers += Resolver.file("LocalIvy", file(Path.userHome +
       File.separator + ".ivy2" + File.separator +
-      "local"))(Resolver.ivyStylePatterns))
+      "local"))(Resolver.ivyStylePatterns),
+    resolvers += "LocalMaven" at "file://" + Path.userHome.absolutePath + "/.m2/repository")
 }
