@@ -16,8 +16,9 @@ object ApplicationBuild extends Build {
     javaCore)
 
   val main = play.Project(appName, appVersion, appDependencies).settings(
-    resolvers += Resolver.file("LocalIvy", file(Path.userHome +
-      File.separator + ".ivy2" + File.separator +
-      "local"))(Resolver.ivyStylePatterns),
-    resolvers += "LocalMaven" at "file://" + Path.userHome.absolutePath + "/.m2/repository")
+    resolvers ++= Seq(
+      Resolver.mavenLocal,
+      Resolver.file("LocalIvy", file(Path.userHome +
+        File.separator + ".ivy2" + File.separator +
+        "local"))(Resolver.ivyStylePatterns)))
 }
