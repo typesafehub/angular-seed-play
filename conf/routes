@@ -13,7 +13,7 @@ GET     /partials/*file             controllers.Assets.at(path="/public/partials
 
 # Obtain require.js with built-in knowledge of how webjars resources can be
 # resolved
-GET     /lib/require.js             controllers.WebJarAssets.requirejs()
+GET     /lib/require.js             controllers.WebJarAssets.requirejs
 
 # Enable webjar based resources to be returned
 GET     /webjars/*file              controllers.WebJarAssets.at(file)
