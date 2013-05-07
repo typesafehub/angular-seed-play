@@ -79,11 +79,6 @@
     </hudson.tasks.Shell>
   </builders>
   <publishers>
-    <hudson.tasks.junit.JUnitResultArchiver>
-      <testResults>target/test-reports/*.xml</testResults>
-      <keepLongStdio>false</keepLongStdio>
-      <testDataPublishers/>
-    </hudson.tasks.junit.JUnitResultArchiver>
     <com.cloudbees.plugins.deployer.DeployPublisher>
       <deployIfUnstable>false</deployIfUnstable>
       <configuration>
