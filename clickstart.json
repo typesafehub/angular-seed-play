@@ -1,0 +1,22 @@
+{
+    "id": "play-angular-seed",
+    "name": "Play! framework with AngularJS",
+    "source": "github",
+    "description": "Play2 and AngularJS - a seed project to start from",    
+    "icon" : "https://d3ko533tu1ozfq.cloudfront.net/clickstart/play2_icon.png", 
+    "supported-by" : "community", 
+    "order" : 5,
+
+    "runtime": {
+        "type": "play2",
+        "app-variables" : { 
+            "proxyBuffering" : false, 
+            "http_version" : "1.1"
+        }
+    },
+    "build-with-jenkins": {
+        "template": {
+            "type": "https://raw.github.com/michaelneale/angular-seed-play/master/jenkins.xml"
+        }
+    }
+}
