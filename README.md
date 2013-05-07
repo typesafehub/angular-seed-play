@@ -5,7 +5,7 @@ This project illustrates how [WebJars](http://www.webjars.org/) can be used alon
 [requirejs](http://requirejs.org/) in relation to the popular
 [angular-seed](https://github.com/angular/angular-seed) project.
 
-<a href="https://grandcentral.cloudbees.com/?CB_clickstart=https://raw.github.com/michaelneale/angular-seed-play/master/clickstart.json"><img src="https://d3ko533tu1ozfq.cloudfront.net/clickstart/deployInstantly.png"/></a>  
+<a href="https://grandcentral.cloudbees.com/?CB_clickstart=https://raw.github.com/typesafehub/angular-seed-play/master/clickstart.json"><img src="https://d3ko533tu1ozfq.cloudfront.net/clickstart/deployInstantly.png"/></a>
 
 The main idea is to show how little impact there is on JavaScript when using it in the context of Play and WebJars.
 The project also illustrates the intrinsic support of JavaScript development from within Play. We hope that the sample

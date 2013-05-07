@@ -16,7 +16,7 @@
     },
     "build-with-jenkins": {
         "template": {
-            "type": "https://raw.github.com/michaelneale/angular-seed-play/master/jenkins.xml"
+            "type": "https://raw.github.com/typesafehub/angular-seed-play/master/jenkins.xml"
         }
     }
 }
