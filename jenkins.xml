@@ -1,0 +1,100 @@
+
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <logRotator>
+    <daysToKeep>60</daysToKeep>
+    <numToKeep>-1</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>20</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <nectar.plugins.rbac.groups.JobProxyGroupContainer>
+      <groups/>
+    </nectar.plugins.rbac.groups.JobProxyGroupContainer>
+    <com.cloudbees.jenkins.plugins.PublicKey/>
+    <com.cloudbees.plugins.deployer.DeployNowJobProperty>
+      <oneClickDeploy>false</oneClickDeploy>
+      <configuration>
+        <user>(jenkins)</user>
+        <account>${account}</account>
+        <deployables/>
+      </configuration>
+    </com.cloudbees.plugins.deployer.DeployNowJobProperty>
+    <com.gmail.ikeike443.PlayAutoTestJobProperty/>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <name></name>
+        <refspec></refspec>
+        <url>${repositoryUrl}</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>**</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <disableSubmodules>false</disableSubmodules>
+    <recursiveSubmodules>false</recursiveSubmodules>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <authorOrCommitter>false</authorOrCommitter>
+    <clean>false</clean>
+    <wipeOutWorkspace>false</wipeOutWorkspace>
+    <pruneBranches>false</pruneBranches>
+    <remotePoll>false</remotePoll>
+    <ignoreNotifyCommit>false</ignoreNotifyCommit>
+    <useShallowClone>false</useShallowClone>
+    <buildChooser class="hudson.plugins.git.util.DefaultBuildChooser"/>
+    <gitTool>Default</gitTool>
+    <submoduleCfg class="list"/>
+    <relativeTargetDir></relativeTargetDir>
+    <reference></reference>
+    <excludedRegions></excludedRegions>
+    <excludedUsers></excludedUsers>
+    <gitConfigName></gitConfigName>
+    <gitConfigEmail></gitConfigEmail>
+    <skipTag>false</skipTag>
+    <includedRegions></includedRegions>
+    <scmName></scmName>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>Oracle JDK 1.7 (latest)</jdk>
+  <triggers class="vector">
+    <com.cloudbees.jenkins.forge.ForgePushTrigger>
+      <spec></spec>
+    </com.cloudbees.jenkins.forge.ForgePushTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>java -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=384M -jar /opt/sbt/sbt-launch-0.11.3-2.jar -Dsbt.log.noformat=true clean compile test dist</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <com.cloudbees.plugins.deployer.DeployPublisher>
+      <deployIfUnstable>false</deployIfUnstable>
+      <configuration>
+        <user>(jenkins)</user>
+        <account>${account}</account>
+        <deployables>
+          <com.cloudbees.plugins.deployer.deployables.WildcardMatchingDeployable>
+            <applicationId>${applicationName}</applicationId>
+            <applicationEnvironment></applicationEnvironment>
+            <applicationConfig/>
+            <apiEndPoint>https://api.cloudbees.com/api</apiEndPoint>
+            <filePattern>dist/*.zip</filePattern>
+          </com.cloudbees.plugins.deployer.deployables.WildcardMatchingDeployable>
+        </deployables>
+      </configuration>
+    </com.cloudbees.plugins.deployer.DeployPublisher>
+  </publishers>
+  <buildWrappers/>
+</project>
