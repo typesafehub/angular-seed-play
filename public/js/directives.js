@@ -1,7 +1,6 @@
 'use strict';
 
-define(['webjars!angular.js'], 
-  function() {
+define(['angular'], function(angular) {
 
 /* Directives */
 

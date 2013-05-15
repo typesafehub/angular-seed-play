@@ -1,7 +1,11 @@
 'use strict';
 
-require(['./controllers', './directives', './filters', './services', 'webjars!angular.js'],
-  function(controllers) {
+define("angular", ['webjars!angular.js'], function() {
+    return angular;
+});
+
+require(['angular', './controllers', './directives', './filters', './services'],
+  function(angular, controllers) {
 
 // Declare app level module which depends on filters, and services
 angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives']).
