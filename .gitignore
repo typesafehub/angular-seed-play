@@ -20,3 +20,4 @@ test-result
 server.pid
 *.iml
 *.eml
+activator-*.sbt

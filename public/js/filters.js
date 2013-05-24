@@ -1,3 +1,5 @@
+/*global define */
+
 'use strict';
 
 define(['angular'], function(angular) {
