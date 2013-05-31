@@ -2,7 +2,9 @@
 
 'use strict';
 
-define("angular", ['webjars!angular.js'], function() {
+// Declare here that angular is the US version - other locales can be easily substituted.
+
+define('angular', ['webjars!angular-locale_en-us.js'], function() {
     return angular;
 });
 
