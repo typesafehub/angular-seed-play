@@ -8,13 +8,16 @@ define('angular', ['webjars!angular-locale_en-us.js'], function() {
     return angular;
 });
 
+
+// Dependency angular-route -> angular.js is missing in current angular webjar
 requirejs.config({
     shim: {
         'webjars!angular-route.js': [ 'webjars!angular.js' ]
     },
  })
 
-require(['angular', 'webjars!angular-route.js', './controllers', './directives', './filters', './services'],
+
+require(['angular', './controllers', './directives', './filters', './services', 'webjars!angular-route.js'],
   function(angular, controllers) {
 
 // Declare app level module which depends on filters, and services
