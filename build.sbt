@@ -11,6 +11,4 @@ libraryDependencies ++= Seq(
   "org.webjars" % "requirejs" % "2.1.8"
 )     
 
-playAssetsDirectories <+= baseDirectory / "client/app"
-
 play.Project.playScalaSettings
