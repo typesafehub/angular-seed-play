@@ -1,4 +1,4 @@
-name := "angularjs_sample"
+name := "angular-seed-play"
 
 version := "1.0-SNAPSHOT"
 
