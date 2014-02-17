@@ -2,43 +2,43 @@
 <html>
 <head>
     <title>
-        Template Template - Activator Template
+        Angular Seed for Play Framework - Activator Template
     </title>
 </head>
 <body>
 <div>
     <h2>
-        AngularJs, WebJars, Play
+        AngularJS, WebJars, Play Framework
     </h2>
 
     <p>
-        This tutorial describes the use of <a href="http://angularjs.org/" target="_blank">AngularJs</a>,
+        This tutorial describes the use of <a href="http://angularjs.org/" target="_blank">AngularJS</a>,
         <a href="http://requirejs.org/" target="_blank">RequireJS</a> and
         <a href="http://www.webjars.org/" target="_blank">WebJars</a> using the
-        <a href="http://www.playframework.com/" target="_blank">Play</a> framework.
+        <a href="http://www.playframework.com/" target="_blank">Play Framework</a>.
         An overview will first be provided of each technology. You will then you guided through how to use
         these technologies with Play.
     </p>
 
     <p>
         This tutorial will take you about 10 minutes. You will be pleasantly surprised with how little there
-        is to be done when using Play and AngularJs, or JavaScript in general for that matter!
+        is to be done when using Play and AngularJS, or JavaScript in general for that matter!
     </p>
 </div>
 <div>
     <h2>
-        AngularJs
+        AngularJS
     </h2>
 
     <p>
         AngularJS lets you extend HTML vocabulary for your application. The resulting environment is expressive,
         readable, and quick to develop with. We have based this angular-seed-play project on the
         <a href="https://github.com/angular/angular-seed" target="_blank">angular-seed</a> project which is the
-        official starting point when writing new AngularJs applications.
+        official starting point when writing new AngularJS applications.
     </p>
 
     <p>
-        An advantage of using Play along with its RequireJs integration is that you will see a reduction in the
+        An advantage of using Play along with its RequireJS integration is that you will see a reduction in the
         code required when compared with the original angular-seed project. The resulting code should also be
         easier to maintain given the management of library versions.
     </p>
@@ -49,7 +49,7 @@
     </h2>
 
     <p>
-        Requirejs is a popular implementation of the
+        RequireJS is a popular implementation of the
         <a href="https://github.com/amdjs/amdjs-api/wiki/AMD" target="_blank">AMD</a> specification -
         a means by which JavaScript applications can be modularised. The easiest way of thinking about AMD is
         that it is JavaScript's equivalent of package and import statements (or namespace and include
@@ -62,7 +62,7 @@
     </h2>
 
     <p>
-        WebJars are zip files containing html, css, images, JavaScript and other web resources along with
+        WebJars are zip files containing HTML, CSS, images, JavaScript and other web resources along with
         a computer-readable description of the library.
     </p>
 
@@ -97,12 +97,15 @@
     </p>
 
     <p>
-        What is important to note is that the variable declared <code>appDependencies</code> specifies a list
-        of WebJars that are required directly by the project. angularjs, requirejs and the webjars-play plugin
-        are declared along with their versions. webjars-play actually depends on requirejs and so the above
-        dependency declaration is not strictly required. However it is there to show that whatever requirejs
-        version is declared by webjars-play, a different version can override it e.g. webjars-play depends on
-        requirejs version 2.1.1 and so when requirejs version 2.2 is released then 2.2 can be specified above.
+        WebJars can be used without anything special in Play, however there is a convenience library called 
+        <code>webjars-play</code> that provides some helper utilities:
+        <pre><code>"org.webjars" %% "webjars-play" % "2.2.1-1"</code></pre>
+    
+        The only explicit WebJar dependency defined is for AngularJS:
+        <pre><code>"org.webjars" % "angularjs" % "1.2.13"</code></pre>
+    
+        WebJars can have transitive dependencies but in the case of AngularJS there are no transitive dependencies.
+        However, the <code>webjars-play</code> library transitively depends on RequireJS which is used by this project.
     </p>
 
     <p>
@@ -111,11 +114,10 @@
         <a href="http://www.webjars.org/" target="_blank">WebJars website</a> allows the easy selection of a
         WebJar and its version and then outputs the declaration required to download it for Play, SBT, Maven,
         Gradle and other build tools.
+    </p>
 </div>
 <div>
-    <h2>
-        Routes
-    </h2>
+    <h2>Routes</h2>
 
     <p>
         The next requirement is to tell Play how WebJar assets are going to be resolved. Play's
@@ -123,85 +125,73 @@
     </p>
 
     <p>
-        The routes declare that Play to return a wrapper of requirejs whenever <code>/lib/require.js</code> is
-        requested. This wrapper configures requirejs so that it knows how to resolve files hosted within WebJars.
-        The <code>/webjars/*file</code> declaration takes a file path and locates the corresponding resource
-        from a WebJar.
-    </p>
-
-    <p>
-        As a JavaScript programmer, you need do very little else to have Play deliver a JavaScript application.
+        The following route exposes access to the WebJar assets:
+        <pre><code>GET        /webjars/*file                    controllers.WebJarAssets.at(file)</code></pre>
     </p>
 </div>
 <div>
-    <h2>
-        RequireJS Usage
-    </h2>
-
+    <h2>Setup: Server-Side Templates</h2>
+    
     <p>
-        Declaring the use of requirejs should look quite familiar.
-        <a href="#code/public/index.html" class="shortcut">index.html</a> includes RequireJS using a
-        <code>script</code> tag and a <code>data-main</code> attribute. The <code>data-main</code> attribute
-        informs RequireJS of what file to start with once it has been loaded itself.
+        While not required, the easiest way to setup a webpage to use WebJars, RequireJS, and AngularJS is with Play's
+        server-side templating.  This application provides examples of this approach and the alternative static 
+        approach.
     </p>
-
+    
     <p>
-        Given the routes declaration from the previous section
-        <a href="#code/public/index.html" class="shortcut">index.html</a> will bring in
-        <a href="#code/public/js/app.js" class="shortcut">app.js</a> after RequireJS has been loaded. Note
-        that Play must also understand the routing in terms of how to load resources from the js path. Check
-        out the <a href="#code/conf/routes" class="shortcut">route declaration</a> for <code>/*file</code> -
-        this tells a thing called the asset controller to get the file from the public folder.
-    </p>
-
-    <p>
-        The first few lines of the require statement in
-        <a href="#code/public/js/app.js" class="shortcut">app.js</a> declare dependencies on JavaScript files
-        relative to the current one via the <code>./</code> convention. These files are required by the
-        angular-seed project itself. The line of interest for this topic though is
-        <code>"webjars!angular.js"</code>. What this does is call upon the WebJars requirejs plugin to load a
-        file that is contained in a WebJar declared as a dependency. An interesting side-effect of this is that
-        any dependencies that angular.js has will also be loaded first!
+        Navigating to <a href="http://localhost:9000/with-server-templating" target="_blank">localhost:9000/with-server-templating</a> will load the page that was generated using server-side templating.  The <a href="#code/conf/routes" class="shortcut">routes</a> file maps that URL to the <code>dynamicIndex</code> method in the <a href="#code/app/controllers/Application.scala" class="shortcut">Application controller</a> which uses the <a href="#code/app/views/DynamicIndex.scala.html" class="shortcut">DynamicIndex.scala.html</a> template to render the webpage.  That template uses a helper in <code>webjars-play</code> to setup RequireJS and load the main JavaScript app:
+        <pre><code>@Html(org.webjars.play.RequireJS.setup("js/app"))</code></pre>
+        If you view the source of the <code>with-server-templating</code> page in your browser you will see generated <code>script</code> tags that do all of the setup.  The one parameter to the <code>RequireJS.setup</code> method is the main JavaScript app, which in this case is the <a href="#code/public/js/app.js" class="shortcut">public/js/app.js</a> file.  In this case that JavaScript app uses RequireJS to load AngularJS and set it up.
     </p>
 </div>
+
+<div>
+    <h2>Setup: Static HTML</h2>
+    
+    <p>
+        Navigating to <a href="http://localhost:9000/without-server-templating" target="_blank">localhost:9000/without-server-templating</a> will load a static asset which setups up RequireJS and AngularJS.  There are two <a href="#code/conf/routes" class="shortcut">routes</a> that are used for this:
+        <pre><code>GET        /without-server-templating        controllers.Assets.at(path="/public", file="static-index.html")
+GET        /setup-requirejs                  controllers.Application.setupRequireJs()</code></pre>
+        The first maps the <code>/without-server-templating</code> URL to the static asset controller and the <a href="#code/public/static-index.html" class="shortcut">public/static-index.html</a> file.  The second <code>setup-requirejs</code> route uses a <code>setupRequireJs</code> method in the <a href="#code/app/controllers/Application.scala" class="shortcut">Application controller</a> to provide a way to get the RequireJS configuration from the <code>webjars-locator</code> utility.  To use this in a static webpage, simply do:
+        <pre><code>&lt;script src="/setup-requirejs"&gt;&lt;/script&gt;</code></pre>
+    
+        Then to run <a href="#code/public/js/app.js" class="shortcut">public/js/app.js</a> using RequireJS do:
+        <pre><code>&lt;script data-main="js/app" src="/webjars/requirejs/2.1.10/require.min.js"&gt;&lt;/script&gt;</code></pre>
+    </p>
+    
+</div>
+
+<div>
+    <h2>Setup: AngularJS</h2>
+    
+    <p>
+        The <a href="#code/public/js/app.js" class="shortcut">app.js</a> file uses RequireJS to load AngularJS and setup the different parts of the application:
+        <pre><code>require(['angular', './controllers', './directives', './filters', './services', 'angular-route'],
+  function(angular, controllers) {</code></pre>
+    
+        The <code>angular</code> and <code>angular-route</code> references use the modules defined by the WebJars setup done in the previous sections.  The other references that are prefixed with <code>./</code> are relative to the <code>app.js</code> file.
+    </p>
+    
+</div>
+
 <div>
     <h2>
-        More RequireJS Usage
+        JsLint Happiness
     </h2>
 
     <p>
-        You'll notice a comment, <code>/*global ...</code>. This comment is a
-        <a href="http://www.jslint.com/lint.html" target="_blank">JsLint</a> directive declaring what globals
-        are assigned from other JavaScript files. Not having this declaration would result in warnings in our
-        code. You can see this for yourself by removing the line beginning with <code>/*global</code>.
-    </p>
-
-    <p>
-        You'll also note that there's a <code>define</code> declaration for AngularJs itself and that the module
-        name is "angular". This is not strictly necessary as you can declare dependencies on AngularJs as
-        <code>"webjars!angular.js"</code> throughout your code. However we have this <code>define</code>
-        declare the module id of <code>"angular"</code> so that the <code>"webjars!"</code> syntax can be
-        avoided throughout our code. One benefit of this convention is that the code you write does not depend
-        directly on WebJars, just AMD itself. Your code should therefore remain portable. Another benefit, in
-        the case of AngularJs, is that a specific locale of it can be assigned to the "angular"
-        module id and free you from specifying the locale elsewhere in your project. Hundreds of locales for
-        AngularJs are available from its WebJar.
-    </p>
-
-    <p>
-        Note that you would typically define all aliases to <code>webjars!</code> resources in one place. In
-        our case we are using <a href="#code/public/js/app.js" class="shortcut">app.js</a> as it is the main
-        file of our project.
+        You'll notice a comment, <code>/*global ...</code> in the <a href="#code/public/js/app.js" class="shortcut">app.js</a> file that tells <a href="http://www.jslint.com/lint.html" target="_blank">JsLint</a> what globals are assigned from other JavaScript files. Not having this declaration would result in warnings in our code.
     </p>
 </div>
+
 <div>
     <h2>
         Conclusion
     </h2>
 
     <p>
-        This tutorial has taken you through the requirements of a Play application in order to use AngularJs,
-        RequireJS and WebJars in the context of the Play framework.
+        This tutorial has taken you through the requirements of a Play application in order to use AngularJS,
+        RequireJS and WebJars in the context of the Play Framework.
     </p>
 
     <p>
@@ -210,7 +200,7 @@
     </p>
 
     <p>
-        Happy Play-ing with AngularJs!
+        Happy Play-ing with AngularJS!
     </p>
 </div>
 </body>
