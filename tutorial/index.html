@@ -130,40 +130,19 @@
     </p>
 </div>
 <div>
-    <h2>Setup: Server-Side Templates</h2>
+    <h2>Setup</h2>
     
     <p>
         While not required, the easiest way to setup a webpage to use WebJars, RequireJS, and AngularJS is with Play's
-        server-side templating.  This application provides examples of this approach and the alternative static 
-        approach.
+        server-side templating.
     </p>
     
     <p>
-        Navigating to <a href="http://localhost:9000/with-server-templating" target="_blank">localhost:9000/with-server-templating</a> will load the page that was generated using server-side templating.  The <a href="#code/conf/routes" class="shortcut">routes</a> file maps that URL to the <code>dynamicIndex</code> method in the <a href="#code/app/controllers/Application.scala" class="shortcut">Application controller</a> which uses the <a href="#code/app/views/DynamicIndex.scala.html" class="shortcut">DynamicIndex.scala.html</a> template to render the webpage.  That template uses a helper in <code>webjars-play</code> to setup RequireJS and load the main JavaScript app:
+        Navigating to <a href="http://localhost:9000/" target="_blank">localhost:9000</a> will load the page that was generated using server-side templating.  The <a href="#code/conf/routes" class="shortcut">routes</a> file maps that URL to the <code>dynamicIndex</code> method in the <a href="#code/app/controllers/Application.scala" class="shortcut">Application</a> controller which uses the <a href="#code/app/views/Index.scala.html" class="shortcut">Index.scala.html</a> template to render the webpage.  That template uses a helper in <code>webjars-play</code> to setup RequireJS and load the main JavaScript app:
         <pre><code>@Html(org.webjars.play.RequireJS.setup("js/app"))</code></pre>
-        If you view the source of the <code>with-server-templating</code> page in your browser you will see generated <code>script</code> tags that do all of the setup.  The one parameter to the <code>RequireJS.setup</code> method is the main JavaScript app, which in this case is the <a href="#code/public/js/app.js" class="shortcut">public/js/app.js</a> file.  In this case that JavaScript app uses RequireJS to load AngularJS and set it up.
+        If you view the source of the index page in your browser you will see generated <code>script</code> tags that do all of the setup.  The one parameter to the <code>RequireJS.setup</code> method is the main JavaScript app, which in this case is the <a href="#code/public/js/app.js" class="shortcut">public/js/app.js</a> file.  In this case that JavaScript app uses RequireJS to load AngularJS and set it up.
     </p>
-</div>
 
-<div>
-    <h2>Setup: Static HTML</h2>
-    
-    <p>
-        Navigating to <a href="http://localhost:9000/without-server-templating" target="_blank">localhost:9000/without-server-templating</a> will load a static asset which setups up RequireJS and AngularJS.  There are two <a href="#code/conf/routes" class="shortcut">routes</a> that are used for this:
-        <pre><code>GET        /without-server-templating        controllers.Assets.at(path="/public", file="static-index.html")
-GET        /setup-requirejs                  controllers.Application.setupRequireJs()</code></pre>
-        The first maps the <code>/without-server-templating</code> URL to the static asset controller and the <a href="#code/public/static-index.html" class="shortcut">public/static-index.html</a> file.  The second <code>setup-requirejs</code> route uses a <code>setupRequireJs</code> method in the <a href="#code/app/controllers/Application.scala" class="shortcut">Application controller</a> to provide a way to get the RequireJS configuration from the <code>webjars-locator</code> utility.  To use this in a static webpage, simply do:
-        <pre><code>&lt;script src="/setup-requirejs"&gt;&lt;/script&gt;</code></pre>
-    
-        Then to run <a href="#code/public/js/app.js" class="shortcut">public/js/app.js</a> using RequireJS do:
-        <pre><code>&lt;script data-main="js/app" src="/webjars/requirejs/2.1.10/require.min.js"&gt;&lt;/script&gt;</code></pre>
-    </p>
-    
-</div>
-
-<div>
-    <h2>Setup: AngularJS</h2>
-    
     <p>
         The <a href="#code/public/js/app.js" class="shortcut">app.js</a> file uses RequireJS to load AngularJS and setup the different parts of the application:
         <pre><code>require(['angular', './controllers', './directives', './filters', './services', 'angular-route'],

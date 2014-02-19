@@ -6,12 +6,7 @@
 GET        /webjars/*file                    controllers.WebJarAssets.at(file)
 
 # Home page
-GET        /                                 controllers.Assets.at(path="/public", file="index.html")
-
-GET        /without-server-templating        controllers.Assets.at(path="/public", file="static-index.html")
-GET        /setup-requirejs                  controllers.Application.setupRequireJs()
-
-GET        /with-server-templating           controllers.Application.dynamicIndex()
+GET        /                                 controllers.Application.index()
 
 # Map the JS resource paths
 GET        /*file                            controllers.Assets.at(path="/public", file)
