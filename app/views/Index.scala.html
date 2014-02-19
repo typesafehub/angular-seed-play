@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>My AngularJS App</title>
-  <link rel="stylesheet" href="css/app.css">
-  <script data-main="js/app" src="lib/require.js"></script>
+  <link rel="stylesheet" href="@routes.Assets.at("css/app.css")">
+  @Html(org.webjars.play.RequireJS.setup("js/app"))
 </head>
 <body>
   <ul class="menu">
