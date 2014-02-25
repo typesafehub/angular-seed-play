@@ -20,7 +20,8 @@ this for us. This makes the maintenance of files easier by enforcing the
 [DRY](http://en.wikipedia.org/wiki/Don't_repeat_yourself) principle.
 2. There is a single script statement for loading requirejs from index.html and a data-main attribute declaring the
 JavaScript to invoke upon loading it. This declaration is entirely conventional requirejs.
-3. Each JavaScript file has an AMD define declaration which declares the AMD modules (these are different to
+3. (WebJars Locator)[https://github.com/webjars/webjars-locator>WebJars Locator] is used to fully automate the path setup for any WebJar dependency.
+4. Each JavaScript file has an AMD define declaration which declares the AMD modules (these are different to
 angular modules - check out (this issue)[https://github.com/angular/angular.js/issues/2078]). Using define() and
 require() is conventional for AMD usage.
 4. AngularJs is declared as a WebJar - check out the project/Build.scala file to see its declaration. requirejs is also

@@ -100,22 +100,37 @@
         WebJars can be used without anything special in Play, however there is a convenience library called 
         <code>webjars-play</code> that provides some helper utilities:
         <pre><code>"org.webjars" %% "webjars-play" % "2.2.1-1"</code></pre>
-    
-        The only explicit WebJar dependency defined is for AngularJS:
+   
+        In this application, the only explicit WebJar dependency in our client is AngularJS:
         <pre><code>"org.webjars" % "angularjs" % "1.2.13"</code></pre>
     
-        WebJars can have transitive dependencies but in the case of AngularJS there are no transitive dependencies.
-        However, the <code>webjars-play</code> library transitively depends on RequireJS which is used by this project.
-    </p>
-
-    <p>
-        Knowledge of Scala is not required in order to declare dependencies. The above constitutes the total
-        amount of Scala that you actually need to deal with. The
-        <a href="http://www.webjars.org/" target="_blank">WebJars website</a> allows the easy selection of a
-        WebJar and its version and then outputs the declaration required to download it for Play, SBT, Maven,
-        Gradle and other build tools.
+        WebJars can have transitive dependencies as well, and they will be managed in a familiar
+        way that is similar to Maven, Ivy or Gradle dependencies.  In in the case of AngularJS there are no
+        transitive dependencies.
+        
+        The <code>webjars-play</code> library does have a transitive dependency on RequireJS, so there's no
+        need to declare RequireJS explicitly.
     </p>
 </div>
+<div>
+    <h2>
+    WebJars Locator
+    </h2>
+    <p>
+        Recent versions of <a href=https://github.com/webjars/webjars-locator>WebJars Locator </a> have 
+        direct support for RequireJS, reducing further the efforts needed to utilize Web Jars in a Play
+        application.  You pull this into your project the same way as any other dependency:
+        <pre><code>"org.webjars" % "webjars-locator" % "0.12"</code></pre>     
+
+        For Locator to do its magic, a WebJar needs to be built with WebJar Locator support.  If declaring a WebJar
+        in your <a href="#code/build.sbt" class="shortcut">build.sbt</a> doesn't result in a correct generated path, it could
+        very well be that the WebJar needs to be updated.  Investigate, and file an issue with the 
+        WebJar's project if appropriate.
+
+    </p>
+
+</div>
+
 <div>
     <h2>Routes</h2>
 
@@ -134,7 +149,7 @@
     
     <p>
         While not required, the easiest way to setup a webpage to use WebJars, RequireJS, and AngularJS is with Play's
-        server-side templating.
+        server-side templating, and the auto-configuration provided by WebJars Locator.
     </p>
     
     <p>
@@ -148,7 +163,9 @@
         <pre><code>require(['angular', './controllers', './directives', './filters', './services', 'angular-route'],
   function(angular, controllers) {</code></pre>
     
-        The <code>angular</code> and <code>angular-route</code> references use the modules defined by the WebJars setup done in the previous sections.  The other references that are prefixed with <code>./</code> are relative to the <code>app.js</code> file.
+        The <code>angular</code> and <code>angular-route</code> references use the modules defined by the WebJars setup done in the previous sections.  (angular-route is part of the angular WebJar). The other references that are prefixed with <code>./</code> are relative to the <code>app.js</code> file.
+
+        If you add other WebJars to your dependency list in <a href="#code/build.sbt" class="shortcut">build.sbt</a>, this generated setup script will have configuration entries for their contents as well.
     </p>
     
 </div>
