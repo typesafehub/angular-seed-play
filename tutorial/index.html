@@ -99,17 +99,17 @@
     <p>
         WebJars can be used without anything special in Play, however there is a convenience library called 
         <code>webjars-play</code> that provides some helper utilities:
-        <pre><code>"org.webjars" %% "webjars-play" % "2.2.1-1"</code></pre>
+        <pre><code>"org.webjars" %% "webjars-play" % "2.2.1-2"</code></pre>
    
         In this application, the only explicit WebJar dependency in our client is AngularJS:
         <pre><code>"org.webjars" % "angularjs" % "1.2.13"</code></pre>
     
         WebJars can have transitive dependencies as well, and they will be managed in a familiar
-        way that is similar to Maven, Ivy or Gradle dependencies.  In in the case of AngularJS there are no
+        way that is similar to Maven, Ivy or Gradle dependencies.  In the case of AngularJS there are no
         transitive dependencies.
         
-        The <code>webjars-play</code> library does have a transitive dependency on RequireJS, so there's no
-        need to declare RequireJS explicitly.
+        The <code>webjars-play</code> library does have a transitive dependencies on RequireJS and WebJars Locator, so there's no
+        need to declare them explicitly.
     </p>
 </div>
 <div>
@@ -117,15 +117,14 @@
     WebJars Locator
     </h2>
     <p>
-        Recent versions of <a href=https://github.com/webjars/webjars-locator>WebJars Locator </a> have 
-        direct support for RequireJS, reducing further the efforts needed to utilize Web Jars in a Play
-        application.  You pull this into your project the same way as any other dependency:
-        <pre><code>"org.webjars" % "webjars-locator" % "0.12"</code></pre>     
+        `webjars-locator` is a transitive dependency of `webjars-play`,
+        so you don't have to do anything special to get it.
+
+        Starting with `webjars-play 2.2.1-2`, the locator dependency has native RequireJS support.     
 
         For Locator to do its magic, a WebJar needs to be built with WebJar Locator support.  If declaring a WebJar
         in your <a href="#code/build.sbt" class="shortcut">build.sbt</a> doesn't result in a correct generated path, it could
-        very well be that the WebJar needs to be updated.  Investigate, and file an issue with the 
-        WebJar's project if appropriate.
+        very well be that the WebJar needs to be updated.  Investigate, and file an issue with the WebJar's project if appropriate.
 
     </p>
 
