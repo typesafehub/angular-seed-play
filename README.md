@@ -24,7 +24,7 @@ JavaScript to invoke upon loading it. This declaration is entirely conventional 
 4. Each JavaScript file has an AMD define declaration which declares the AMD modules (these are different to
 angular modules - check out (this issue)[https://github.com/angular/angular.js/issues/2078]). Using define() and
 require() is conventional for AMD usage.
-4. AngularJs is declared as a WebJar - check out the project/Build.scala file to see its declaration. requirejs is also
+5. AngularJs is declared as a WebJar - check out the project/Build.scala file to see its declaration. requirejs is also
 declared this way so you can easily upgrade its version as new ones become available. By being brought in as a WebJar
 you have all of the advantages that artifact repositories including Maven and Ivy based ones bring; in particular
 dependency management.
