@@ -1,10 +1,15 @@
+@import play.api.Play.current
+
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <title>My AngularJS App</title>
   <link rel="stylesheet" href="@routes.Assets.at("css/app.css")">
-  @Html(org.webjars.play.RequireJS.setup("js/app"))
+  <script>
+    @Html(org.webjars.RequireJS.getSetupJavaScript(routes.StaticWebJarAssets.at("").url, current.configuration.getString("contentUrl").orNull))
+  </script>
+  <script data-main="@routes.Assets.at("js/app")" src="@StaticWebJarAssets.getUrl(WebJarAssets.locate("require.js"))"></script>
 </head>
 <body>
   <ul class="menu">

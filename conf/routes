@@ -2,11 +2,11 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Enable webjar based resources to be returned
-GET        /webjars/*file                    controllers.WebJarAssets.at(file)
-
 # Home page
 GET        /                                 controllers.Application.index()
 
-# Map the JS resource paths
-GET        /*file                            controllers.Assets.at(path="/public", file)
+# Static Assets in /public
+GET        /assets/*file                     controllers.Assets.at(path="/public", file)
+
+# WebJar Assets
+GET        /webjars/*file                    controllers.StaticWebJarAssets.at(file)
