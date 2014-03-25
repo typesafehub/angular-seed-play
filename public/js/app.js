@@ -2,8 +2,14 @@
 
 'use strict';
 
-require(['angular', './controllers', './directives', './filters', './services', 'angular-route'],
+require.config({
+    'paths': { 'angular-file-upload': webjars.path("angular-file-upload", "angular-file-upload") },
+    'shim': {'angular-file-upload': ['angular']} // for some reason this isn't working
+});
+
+require(['angular',  './controllers', './directives', './filters', './services', 'angular-route'],
   function(angular, controllers) {
+    require(['angular-file-upload'], function() { });
 
     // Declare app level module which depends on filters, and services
     
