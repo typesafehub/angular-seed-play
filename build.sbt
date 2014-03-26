@@ -8,3 +8,8 @@ libraryDependencies ++= Seq(
 )     
 
 play.Project.playScalaSettings
+
+requireJs += "app.js"
+
+requireJsShim += "app.js"
+
