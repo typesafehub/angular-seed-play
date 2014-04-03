@@ -1,4 +1,3 @@
-
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
@@ -90,7 +89,7 @@
             <applicationEnvironment></applicationEnvironment>
             <applicationConfig/>
             <apiEndPoint>https://api.cloudbees.com/api</apiEndPoint>
-            <filePattern>dist/*.zip</filePattern>
+            <filePattern>target/universal/*.zip</filePattern>
           </com.cloudbees.plugins.deployer.deployables.WildcardMatchingDeployable>
         </deployables>
       </configuration>
