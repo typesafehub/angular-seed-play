@@ -97,10 +97,6 @@
     </p>
 
     <p>
-        WebJars can be used without anything special in Play, however there is a convenience library called 
-        <code>webjars-play</code> that provides some helper utilities:
-        <pre><code>"org.webjars" %% "webjars-play" % "2.2.1-2"</code></pre>
-   
         In this application, the only explicit WebJar dependency in our client is AngularJS:
         <pre><code>"org.webjars" % "angularjs" % "1.2.13"</code></pre>
     
@@ -113,34 +109,17 @@
     </p>
 </div>
 <div>
-    <h2>
-    WebJars Locator
-    </h2>
-    <p>
-        `webjars-locator` is a transitive dependency of `webjars-play`,
-        so you don't have to do anything special to get it.
-
-        Starting with `webjars-play 2.2.1-2`, the locator dependency has native RequireJS support.     
-
-        For Locator to do its magic, a WebJar needs to be built with WebJar Locator support.  If declaring a WebJar
-        in your <a href="#code/build.sbt" class="shortcut">build.sbt</a> doesn't result in a correct generated path, it could
-        very well be that the WebJar needs to be updated.  Investigate, and file an issue with the WebJar's project if appropriate.
-
-    </p>
-
-</div>
-
-<div>
     <h2>Routes</h2>
 
     <p>
-        The next requirement is to tell Play how WebJar assets are going to be resolved. Play's
+        The next requirement is to tell Play how assets are going to be resolved. Play's
         <a href="#code/conf/routes" class="shortcut">routes</a> file is used to do this.
     </p>
 
     <p>
         The following route exposes access to the WebJar assets:
-        <pre><code>GET        /webjars/*file                    controllers.WebJarAssets.at(file)</code></pre>
+        <pre><code>GET    /*file    controllers.Assets.versioned(path="/public", file: Asset)
+</code></pre>
     </p>
 </div>
 <div>
@@ -148,13 +127,7 @@
     
     <p>
         While not required, the easiest way to setup a webpage to use WebJars, RequireJS, and AngularJS is with Play's
-        server-side templating, and the auto-configuration provided by WebJars Locator.
-    </p>
-    
-    <p>
-        Navigating to <a href="http://localhost:9000/" target="_blank">localhost:9000</a> will load the page that was generated using server-side templating.  The <a href="#code/conf/routes" class="shortcut">routes</a> file maps that URL to the <code>dynamicIndex</code> method in the <a href="#code/app/controllers/Application.scala" class="shortcut">Application</a> controller which uses the <a href="#code/app/views/Index.scala.html" class="shortcut">Index.scala.html</a> template to render the webpage.  That template uses a helper in <code>webjars-play</code> to setup RequireJS and load the main JavaScript app:
-        <pre><code>@Html(org.webjars.play.RequireJS.setup("js/app"))</code></pre>
-        If you view the source of the index page in your browser you will see generated <code>script</code> tags that do all of the setup.  The one parameter to the <code>RequireJS.setup</code> method is the main JavaScript app, which in this case is the <a href="#code/public/js/app.js" class="shortcut">public/js/app.js</a> file.  In this case that JavaScript app uses RequireJS to load AngularJS and set it up.
+        server-side templating.
     </p>
 
     <p>
