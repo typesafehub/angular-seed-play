@@ -6,5 +6,3 @@ This project illustrates how [WebJars](http://www.webjars.org/) can be used alon
 [angular-seed](https://github.com/angular/angular-seed) project.
 
 The project is available as a [Typesafe Activator Template](http://typesafe.com/activator/template/angular-seed-play).
-
-> Note that there is a separate play23 branch in support of Play 2.3.
