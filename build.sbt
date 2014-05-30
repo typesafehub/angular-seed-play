@@ -3,13 +3,10 @@ name := "angular-seed-play"
 version := "1.0-SNAPSHOT"
 
 libraryDependencies ++= Seq(
-  "org.webjars" %% "webjars-play" % "2.2.1-2",
-  "org.webjars" % "angularjs" % "1.2.13"
+  "org.webjars" % "angularjs" % "1.3.0-beta.2",
+  "org.webjars" % "requirejs" % "2.1.11-1"
 )     
 
-play.Project.playScalaSettings
+lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
-requireJs += "app.js"
-
-requireJsShim += "app.js"
-
+pipelineStages := Seq(rjs, digest, gzip)
