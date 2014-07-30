@@ -131,11 +131,11 @@
     </p>
 
     <p>
-        The <a href="#code/public/js/app.js" class="shortcut">app.js</a> file uses RequireJS to load AngularJS and setup the different parts of the application:
+        The <a href="#code/public/js/main.js" class="shortcut">main.js</a> file uses RequireJS to load AngularJS and setup the different parts of the application:
         <pre><code>require(['angular', './controllers', './directives', './filters', './services', 'angular-route'],
   function(angular, controllers) {</code></pre>
     
-        The <code>angular</code> and <code>angular-route</code> references use the modules defined by the WebJars setup done in the previous sections.  (angular-route is part of the angular WebJar). The other references that are prefixed with <code>./</code> are relative to the <code>app.js</code> file.
+        The <code>angular</code> and <code>angular-route</code> references use the modules defined by the WebJars setup done in the previous sections.  (angular-route is part of the angular WebJar). The other references that are prefixed with <code>./</code> are relative to the <code>main.js</code> file.
 
         If you add other WebJars to your dependency list in <a href="#code/build.sbt" class="shortcut">build.sbt</a>, this generated setup script will have configuration entries for their contents as well.
     </p>
@@ -148,7 +148,7 @@
     </h2>
 
     <p>
-        You'll notice a comment, <code>/*global ...</code> in the <a href="#code/public/js/app.js" class="shortcut">app.js</a> file that tells <a href="http://www.jslint.com/lint.html" target="_blank">JsLint</a> what globals are assigned from other JavaScript files. Not having this declaration would result in warnings in our code.
+        You'll notice a comment, <code>/*global ...</code> in the <a href="#code/public/js/main.js" class="shortcut">main.js</a> file that tells <a href="http://www.jslint.com/lint.html" target="_blank">JsLint</a> what globals are assigned from other JavaScript files. Not having this declaration would result in warnings in our code.
     </p>
 </div>
 
