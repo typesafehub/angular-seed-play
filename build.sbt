@@ -10,3 +10,5 @@ libraryDependencies ++= Seq(
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
 pipelineStages := Seq(rjs, digest, gzip)
+
+JsEngineKeys.engineType := JsEngineKeys.EngineType.Node
